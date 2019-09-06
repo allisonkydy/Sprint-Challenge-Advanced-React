@@ -35,11 +35,18 @@ class App extends React.Component {
     this.setState({ players: filtered })
   }
 
+  resetPlayers = () => {
+    if (this.state.playerData !== this.state.players) {
+      this.setState({ players: [...this.state.playerData]})
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Women's World Cup</h1>
         <Search filterPlayers={this.filterPlayers} />
+        <button onClick={() => this.resetPlayers()}>Clear Search</button>
         {this.state.players.map(player => {
           return <Player player={player} key={player.id} />
         })}
