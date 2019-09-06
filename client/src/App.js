@@ -2,6 +2,7 @@ import React from 'react';
 
 import Player from './components/Player';
 import Search from './components/Search';
+import Graph from './components/Graph';
 import './App.css';
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Women's World Cup</h1>
+        <Graph players={this.state.players} />
         <Search filterPlayers={this.filterPlayers} />
         <button onClick={() => this.resetPlayers()}>Clear Search</button>
         {this.state.players.map(player => {
