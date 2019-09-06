@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Player from './components/Player';
 import './App.css';
 
 class App extends React.Component {
@@ -23,6 +25,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Women's World Cup</h1>
+        {this.state.playerData.map(player => {
+          return <Player player={player} key={player.id} />
+        })}
       </div>
     );
   }
