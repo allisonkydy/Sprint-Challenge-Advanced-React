@@ -13,7 +13,7 @@ const Search = ({ filterPlayers }) => {
         placeholder="enter a country..."
         onChange={handleInput}
       />
-      <button type="submit">Search</button>
+      <button type="submit" data-testid="search-btn">Search</button>
     </form>
   )
 }

@@ -12,9 +12,14 @@ test('header displaying', () => {
 })
 
 test('search form displaying', () => {
-  const { getByPlaceholderText, getByText } = render(<App />);
+  const { getByPlaceholderText, getByTestId } = render(<App />);
   getByPlaceholderText("enter a country...");
-  getByText(/search/i);
+  getByTestId("search-btn");
+})
+
+test('clear button displaying', () => {
+  const { getByText } = render(<App />);
+  getByText(/clear/i);
 })
 
 test('player data fetched and displaying', async () => {
