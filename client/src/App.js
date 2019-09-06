@@ -32,7 +32,7 @@ class App extends React.Component {
 
   filterPlayers = (input) => {
     let playersCopy = [...this.state.playerData];
-    let filtered = playersCopy.filter(player => player.country === input);
+    let filtered = playersCopy.filter(player => player.country.toLowerCase() === input.toLowerCase());
     this.setState({ players: filtered })
   }
 
