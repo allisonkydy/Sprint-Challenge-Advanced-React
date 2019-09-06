@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 
 const Search = ({ filterPlayers }) => {
-  const [input, setInput] = useState("");
-
-  const handleInput = e => {
-    setInput(e.target.value);
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    filterPlayers(input);
-    setInput("");
-  }
+  const [input, handleInput, handleSubmit] = useForm("", filterPlayers)
 
   return (
     <form onSubmit={handleSubmit}>
