@@ -1,13 +1,15 @@
 import React from 'react';
 
 import Player from './components/Player';
+import Search from './components/Search';
 import './App.css';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      playerData: []
+      playerData: [],
+      players: []
     }
   }
 
@@ -21,11 +23,24 @@ class App extends React.Component {
       .catch(err => console.log(err))
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.playerData !== prevState.playerData) {
+      this.setState({ players: this.state.playerData })
+    }
+  }
+
+  filterPlayers = (input) => {
+    let playersCopy = [...this.state.playerData];
+    let filtered = playersCopy.filter(player => player.country === input);
+    this.setState({ players: filtered })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Women's World Cup</h1>
-        {this.state.playerData.map(player => {
+        <Search filterPlayers={this.filterPlayers} />
+        {this.state.players.map(player => {
           return <Player player={player} key={player.id} />
         })}
       </div>
